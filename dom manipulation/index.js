@@ -1,17 +1,41 @@
-// Write your code below:
-const heading = document.createElement('h3')
-const headingText = document.createTextNode( "Buy high quality organic fruits online")
-heading.appendChild(headingText)
-// heading.style.fontStyle = 'italic'
-heading.setAttribute('style' , 'font-style: italic;')
-// console.log(heading)
-const divs = document.getElementsByTagName('div')
-const firstdiv = divs[0]
-firstdiv.appendChild(heading)
-const para = document.createElement('p')
-const paraText = document.createTextNode("Total fruits: 4")
-para.appendChild(paraText)
+// Add the Edit Button:
+
+
+// Implement the code as in video but with one extra 'Edit' button in 'li'
+const form = document.querySelector('form')
 const fruits = document.querySelector('.fruits')
-const secondDiv = divs[1]
-secondDiv.insertBefore(para , fruits )
-para.id = "fruits-total"
+// const btn = document.createElement('button')
+const btnText = "Edit"
+// btn.appendChild(btnText);
+// btn.className = 'edit-btn'
+// console.log(btn)
+const addbtn = document.querySelectorAll('.fruit')
+for(let i = 0 ; i<addbtn.length ; i++){
+    const editBtn = document.createElement('button'); 
+    editBtn.textContent = btnText;
+    editBtn.className = 'edit-btn';
+    addbtn[i].appendChild(editBtn);
+    // addbtn[i].appendChild(btn)
+}
+form.addEventListener('submit',function(event){
+        event.preventDefault();
+        const fruittoadd = document.getElementById('fruit-to-add')
+        const newli = document.createElement('li')
+        newli.innerHTML = fruittoadd.value + '<button class="delete-btn">x</button>'+ '<button class="edit-btn">Edit</button>'
+        // const liText = document.createTextNode(fruittoadd.value)
+        // newli.appendChild(liText)
+        // newli.className = "fruit"
+        // const btn = document.createElement('button')
+        // const btnText = document.createTextNode('x')
+        // btn.appendChild(btnText)
+        // btn.className='delete-btn'
+        // newli.appendChild(btn)
+        fruits.appendChild(newli)
+    }
+)
+fruits.addEventListener('click' , function(event){
+    if(event.target.classList.contains('delete-btn')){
+        const fruittodelete = event.target.parentElement
+        fruits.removeChild(fruittodelete)
+    }
+})
