@@ -1,29 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-</head>
-
-<body style="margin: 0">
-  <!-- Write your code below -->
-  <form onsubmit = "savetolocalStorage(event)">
-     <label for="nameInput">Name: </label>
-    <input type="text" id="nameInput" name="username">
-    <br><br>
-    <label for="emailInput">Email:</label>
-    <input type="email" id="emailInput" name="email">
-    <br><br>
-    <label for="phoneInput">Phone Number: </label>
-    <input type="tel" id="phoneInput" name="phone">
-    <br><br>
-    <label ><button>Submit</button></label>
-  </form>
-  
-</body>
-<script src="index.js"></script>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="margin: 0">
+    <form onsubmit="handleFormSubmit(event)">
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" /><br><br>
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" /><br><br>
+      <label for="phone">Phone No</label>
+      <input type="tel" name="phone" id="phone" /><br><br>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+  <script src="index.js"></script>
 </html>

@@ -1,12 +1,15 @@
 // Write your code below:
-function savetolocalStorage(event){
+function handleFormSubmit(event){
    event.preventDefault();
    const nameh = event.target.username.value;
    const emailh = event.target.email.value;
    const phoneh = event.target.phone.value;
 
-   localStorage.setItem('Username' , nameh);  
-   localStorage.setItem('Email' , emailh);
-   localStorage.setItem('Phone' , phoneh);
+    let myObj = {
+      username : nameh,
+      email : emailh , 
+      phone : phoneh      
+    }
+   localStorage.setItem("User Details" , JSON.stringify(myObj));  
+   console.log(localStorage)
 }
-module.exports = savetolocalStorage;
