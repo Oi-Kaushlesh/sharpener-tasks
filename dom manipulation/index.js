@@ -1,40 +1,43 @@
-// Write your code below:
-function handleFormSubmit(event){
-   event.preventDefault();
-   const name = event.target.username.value;
-   const email = event.target.email.value;
-   const phone = event.target.phone.value;
- 
-   let detailObj = {
-     username : name,
-     email : email,
-     phone : phone
-   }
-   localStorage.setItem(email , JSON.stringify(detailObj));
-   const list = document.createElement('li')
-   const unorderlist = document.getElementById('userlist')
+function handleFormSubmit(event) {
+  event.preventDefault();
+  const nameh = event.target.username.value;
+  const emailh = event.target.email.value;
+  const phoneh = event.target.phone.value;
 
-   list.style.fontWeight= 'bold';
-   const delBtn = document.createElement('button')
-   const delBtnText = document.createTextNode('Delete')
-   delBtn.appendChild(delBtnText);
-   console.log(delBtn)
-   delBtn.className = 'deleteBtn'
-   const listText = document.createTextNode(detailObj.username +" - "+ detailObj.email +" - "+ detailObj.phone)
-   list.appendChild(listText );
-   list.appendChild(delBtn)
-   unorderlist.appendChild(list)
-   delBtn.onclick = () =>{
-         unorderlist.removeChild(list)
-         localStorage.removeItem(email)
-   }
- }
-//  unorderlist.addEventListener('click' , function(event){
-//    if (event.target.classList.contains('deleteBtn')) {
-//       const listToDelete = event.target.parentElement
-//       const emailToDelete = listToDelete.textContent.trim().split(' - ')[1];
-//       unorderlist.removeChild(listToDelete)
-//       localStorage.removeItem(emailToDelete)
-//    }
-//  })
-//  module.exports = handleFormSubmit;
+  let myObj = {
+    username: nameh,
+    email: emailh,
+    phone: phoneh,
+  };
+  localStorage.setItem(myObj.email, JSON.stringify(myObj));
+  showOnsceen(myObj);
+  function showOnsceen(myObj) {
+    const unlist = document.querySelector("ul");
+    const li = document.createElement("li");
+    const listitem = document.createTextNode(
+      myObj.username + " - " + myObj.email + " - " + myObj.phone
+    );
+    li.appendChild(listitem);
+    unlist.appendChild(li);
+    const delbtn = document.createElement("button");
+    const btnText = document.createTextNode("Delete");
+    delbtn.appendChild(btnText);
+    li.append(delbtn);
+    delbtn.onclick = () => {
+      unlist.removeChild(li);
+      localStorage.removeItem(myObj.email);
+    };
+    const editbtn = document.createElement("button");
+    const edbtntext = document.createTextNode("Edit");
+    editbtn.appendChild(edbtntext);
+    li.appendChild(editbtn);
+    editbtn.onclick = (event) => {
+      document.getElementById('username').value = myObj.username
+      document.getElementById('email').value = myObj.email
+      document.getElementById('phone').value = myObj.phone
+
+      unlist.removeChild(li);
+      localStorage.removeItem(myObj.email);
+    };
+  }
+}
