@@ -26,7 +26,6 @@ function handleFormSubmit(event) {
   listitem.appendChild(listText);
   listitem.appendChild(delbtn);
   listitem.appendChild(editbtn);
-  //   listitem.appendChild(delbtn);
   ullist.appendChild(listitem);
   delbtn.onclick = () => {
     ullist.removeChild(listitem);
